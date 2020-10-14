@@ -1,9 +1,13 @@
 FROM python:2.7-alpine
 
-RUN apk add --no-cache --virtual builddeps gcc musl-dev && \
+RUN apk add --update --no-cache libressl-dev libffi-dev musl-dev postgresql-dev gcc make bash postgresql-client && \
    pip --no-cache-dir install aws-sam-cli awscli && \
-   apk add jq nodejs npm && \
-   apk del builddeps
+   apk add --update --no-cache jq nodejs npm postgresql-libs
+
+#RUN apk add --no-cache --virtual builddeps gcc musl-dev && \
+#   pip --no-cache-dir install aws-sam-cli awscli && \
+#   apk add jq nodejs npm && \
+#   apk del builddeps
 
 # drone creates a workspace with root, so user switching does not make sense
 #RUN	adduser -s /bin/bash samcli \
