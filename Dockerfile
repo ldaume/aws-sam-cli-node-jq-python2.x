@@ -4,6 +4,7 @@ RUN apk add --update --no-cache libressl-dev libffi-dev musl-dev postgresql-dev 
    pip --no-cache-dir install aws-sam-cli awscli && \
    apk add --update --no-cache jq nodejs npm postgresql-libs
 
+RUN sam --version
 #RUN apk add --no-cache --virtual builddeps gcc musl-dev && \
 #   pip --no-cache-dir install aws-sam-cli awscli && \
 #   apk add jq nodejs npm && \
